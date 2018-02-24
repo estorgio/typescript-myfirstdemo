@@ -3,7 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
-  'jquery'
+  'jquery',
+  'bootstrap/dist/css/bootstrap.min.css'
 ];
 
 module.exports = {
