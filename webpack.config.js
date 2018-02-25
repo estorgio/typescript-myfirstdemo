@@ -9,19 +9,27 @@ const VENDOR_LIBS = [
 
 module.exports = {
   entry: {
-    bundle: './src/js/app.js',
+    bundle: './src/ts/app.ts',
     vendor: VENDOR_LIBS
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
   },
+  devtool: "source-map",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"]
+  },
   module: {
     rules: [
       {
-        use: 'babel-loader',
+        loader: "awesome-typescript-loader",
+        test: /\.tsx?$/
+      },
+      {
+        loader: "source-map-loader",
         test: /\.js$/,
-        exclude: /node_modules/
+        enforce: "pre"
       },
       {
         use: ['style-loader', 'css-loader'],
